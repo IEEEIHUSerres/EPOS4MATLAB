@@ -1,7 +1,7 @@
 /* This a library for communication with Maxon Motors EPOS2 motor controllers
  * using MATLAB.
  *
- * Copyright, Eugenio Yime Rodríguez, 2015
+ * Copyright, Eugenio Yime Rodrï¿½guez, 2015
  *  
  */
 
