@@ -11,7 +11,7 @@ function res = GetCurrent(handle, nodeid)
 %
 % handle is the handle returned by OpenCommunication
 %
-% nodeid is the id number for EPOS 2 controller
+% nodeid is the id number for EPOS 4 controller
 % 
 % Copyright E. Yime, 2015.
 % Colombia

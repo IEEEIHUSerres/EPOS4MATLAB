@@ -1,5 +1,5 @@
 function res = EnableNode(handle, nodeid)
-% This function enable a EPOS 2 node, so the motor will be powered and 
+% This function enable a EPOS 4 node, so the motor will be powered and
 % controlled.
 %
 % Call it as,
@@ -12,7 +12,7 @@ function res = EnableNode(handle, nodeid)
 %
 % handle is the handle returned by OpenCommunication
 % 
-% nodeid is the EPOS 2 ID
+% nodeid is the EPOS 4 ID
 %
 % Copyright E. Yime, 2015.
 % Colombia

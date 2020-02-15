@@ -1,5 +1,5 @@
 function res = GetPosition(handle, nodeid)
-% This function get the actual position in quadrature encoder pulses for a EPOS 2 node
+% This function get the actual position in quadrature encoder pulses for a EPOS 4 node
 %
 % Call it as,
 %
@@ -11,7 +11,7 @@ function res = GetPosition(handle, nodeid)
 %
 % handle is the number returned by OpenCommunication
 %
-% nodeid is the ID for EPOS 2 controller
+% nodeid is the ID for EPOS 4 controller
 %
 % Copyright E. Yime, 2015.
 % Colombia

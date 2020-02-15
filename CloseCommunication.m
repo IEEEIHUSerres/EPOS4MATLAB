@@ -1,5 +1,5 @@
 function res = CloseCommunication(handle)
-% This function close the communication with EPOS2 controller through USB
+% This function close the communication with EPOS4 controller through USB
 %
 % Call it as,
 %

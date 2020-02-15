@@ -1,5 +1,5 @@
 function res = SetProfilePositionData(handle, nodeid, vel, acc)
-% This function set the desired velocity setpoint for a EPOS 2 node
+% This function set the desired velocity setpoint for a EPOS 4 node
 % It is only work in Profile Position Mode, which can be set with,
 %
 %   >> SetOperationMode(handle, nodeid, 6);
@@ -14,7 +14,7 @@ function res = SetProfilePositionData(handle, nodeid, vel, acc)
 %
 % handle is the number returned by OpenCommunication
 %
-% nodeid is the ID for EPOS 2 controller
+% nodeid is the ID for EPOS 4 controller
 %
 % vel is the profile position maximun velocity in rpm 
 %

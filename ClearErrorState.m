@@ -1,9 +1,9 @@
 function res = ClearErrorState(handle, nodeid)
-% This function clears the error state for epos2 with number nodeid
+% This function clears the error state for epos4 with number nodeid
 %
 % Call it as,
 %
-% res = ClearErorrState(handle, nodeid)
+% res = ClearErrorState(handle, nodeid)
 %
 % Where:
 %
@@ -11,7 +11,7 @@ function res = ClearErrorState(handle, nodeid)
 %
 % handle is the handle returned by OpenCommunication
 %
-% nodeid is the id number for EPOS 2 controller
+% nodeid is the id number for EPOS 4 controller
 % 
 % Copyright E. Yime, 2015.
 % Colombia

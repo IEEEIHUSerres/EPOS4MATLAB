@@ -1,5 +1,5 @@
 function res = QuickStop(handle, nodeid)
-% This function stops the motor attached to a EPOS 2 controller
+% This function stops the motor attached to a EPOS 4 controller
 %
 % Call it as,
 %
@@ -11,7 +11,7 @@ function res = QuickStop(handle, nodeid)
 %
 % handle is the number retorned by OpenCommunication
 %
-% nodeid is the EPOS 2 controller ID
+% nodeid is the EPOS 4 controller ID
 %
 % Copyright E. Yime, 2015.
 % Colombia

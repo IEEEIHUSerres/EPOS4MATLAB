@@ -1,7 +1,7 @@
-/* This a library for communication with Maxon Motors EPOS2 motor controllers
+/* This a library for communication with Maxon EPOS4 motor controllers
  * using MATLAB.
  *
- * Copyright, Eugenio Yime Rodr�guez, 2015
+ * Copyright, Eugenio Yime Rodriguez, 2015
  *  
  */
 
@@ -12,15 +12,13 @@
 #include "Win2Linux.h"
 #endif
 
-void
-mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[])
-{
-    DWORD  ErrCode  = 0;
-    BOOL   Output = FALSE;
+void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
+    DWORD ErrCode = 0;
+    BOOL Output = FALSE;
     HANDLE mHandle;
-    WORD   NodeID;
-    long   lHandle;
-    char   ErrorInfo[255];
+    WORD NodeID;
+    long lHandle;
+    char ErrorInfo[255];
 
     /* Examine input (right-hand-side) arguments. */
     if (nrhs != 1) {
@@ -28,9 +26,9 @@ mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[])
         return;
     }
     /* Check first input */
-    if (mxGetM(prhs[0]) != 1 || mxGetM(prhs[0]) != 1 ) {
-       mexPrintf("Error: this function requires one input scalar\n");
-       return;
+    if (mxGetM(prhs[0]) != 1 || mxGetM(prhs[0]) != 1) {
+        mexPrintf("Error: this function requires one input scalar\n");
+        return;
     }
 
     /* create output matrix */
@@ -39,7 +37,7 @@ mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[])
     /* first input */
     lHandle = (long) *mxGetPr(prhs[0]);
     mHandle = LongToHandle(lHandle);
-    
+
     /* Close Device */
     Output = VCS_CloseDevice(mHandle, &ErrCode);
     if (ErrCode) {

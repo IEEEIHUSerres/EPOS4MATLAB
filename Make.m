@@ -2,8 +2,8 @@ clc
 clear
 
 % introduction
-disp('Welcome to EPOS2 library')
-disp('Eugenio Yime, 2015')
+disp('Welcome to EPOS4 on MATLAB library')
+disp('based on EPOS2 library (Eugenio Yime Rodriguez)')
 
 % detecting computer
 str = computer;
@@ -31,7 +31,7 @@ sourcecode = { ' OpenCommunication.c', ' CloseCommunication.c', ...
 if ( lin32 || lin64  )
     disp('.. Compiling for a Linux computer')
     % directory to include files
-    includedir = './Epos2Linux';
+    includedir = './Epos4Linux';
     % library name
     libeposname = 'EposCmd';
     % definitions for right compilation
@@ -41,7 +41,7 @@ end
 if ( win32  || win64  )
     disp('.. Compiling for a Windows computer')
     % directory to include files
-    includedir = '.\Epos2Windows';
+    includedir = '.\Epos4Windows';
     % library name
     if (win32==1)
         libeposname = 'EposCmd';
@@ -50,6 +50,8 @@ if ( win32  || win64  )
     end
     % definitions
     definitions = 'WINDOWS';
+    
+    FixDefinitionsForWindows('.\Epos4Windows\Definitions.h')
 end
 
 % compile each file
@@ -66,8 +68,13 @@ dirtopath = cd;
 addpath( dirtopath );
 if ( win32 || win64 )
     % copy dlls and lib to actual directory
-    copyfile('.\Epos2Windows\*.dll', '.', 'f');
-    copyfile('.\Epos2Windows\*.lib', '.', 'f');
+    if isempty(dir('*.dll'))
+        copyfile('.\Epos4Windows\*.dll', '.', 'f');
+    end
+    
+    if isempty(dir('*.dll'))
+        copyfile('.\Epos4Windows\*.lib', '.', 'f');
+    end
 end
 disp('.. done, you can now use this library')
 

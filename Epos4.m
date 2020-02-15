@@ -1,18 +1,18 @@
-classdef Epos2 < handle
-    % EPOS2 class, use this class for communication with Maxon Motors EPOS2
+classdef Epos4 < handle
+    % EPOS4 class, use this class for communication with Maxon EPOS4
     %   motor controller
     %   
     % This class has the methods
     %
-    % EPOS2 (nodeID), Constructor
+    % EPOS4 (nodeID, portNameSuffix), Constructor
     %
-    % use it as: Motor1 = Epos2(1);
-    % for creating a new object Motor1 wich will deal with EPOS2 Node 1.
+    % use it as: Motor1 = Epos4(1,0);
+    % for creating a new object Motor1 wich will deal with EPOS4 Node 1 and USB0.
     %
     % delete, Destructor: 
     %
     % use it as: delete(Motor1);
-    % when you finish with EPOS2 node.
+    % when you finish with EPOS4 node.
     %
     % ActualPosition
     % return actual encoder position. 
@@ -35,7 +35,7 @@ classdef Epos2 < handle
     % errorstate = Motor1.IsInErrorState;
     %
     % ClearErrorState
-    % clear actual error in EPOS2
+    % clear actual error in EPOS4
     % Example:
     % if (Motor1.IsInErrorState)
     %     Motor1.ClearErrorState;
@@ -52,16 +52,16 @@ classdef Epos2 < handle
     % Motor1.DisableNode;
     %
     % SetOperationMode
-    % Change the operation mode for epos2
+    % Change the operation mode for epos4
     % Example:
     % Motor1.SetOperationMode(OperationModes.CurrentMode);
     %  tip: use the tab key for the list of operation modes in class.
     %       >> OperationModes.<tab>
     % for further help type:
-    %       >> help Epos2.SetOperationMode
+    %       >> help Epos4.SetOperationMode
     %
     % GetOperationModes
-    % return the actual Operation Mode in Epos2
+    % return the actual Operation Mode in Epos4
     % Example
     % OpMode = Motor1.GetOperationMode;
     %
@@ -70,7 +70,7 @@ classdef Epos2 < handle
     % Example
     % Motor1.SetHommingMethod( HommingMethods.ActualPosition )
     % for further help type:
-    %       >> help Epos2.SetHommingMethod
+    %       >> help Epos4.SetHommingMethod
     %
     % GetHommingMethod
     % for returning the actual home method
@@ -87,14 +87,14 @@ classdef Epos2 < handle
     % Example:
     % Motor1.MotionInPosition( 132000 )
     % for further help type:
-    %       >> help Epos2.MotionInPosition
+    %       >> help Epos4.MotionInPosition
     %
     % MotionInVelocity
     % for moving the motor in Velocity or Profile Velocity Mode
     % Example:
     % Motor1.MotionInVelocity( 2000 )
     % for further help type:
-    %       >> help Epos2.MotionInVelocity
+    %       >> help Epos4.MotionInVelocity
     %
     % MotionWithCurrent
     % for moving the motor in Current Mode
@@ -121,15 +121,15 @@ classdef Epos2 < handle
     end
     
     methods
-        function res = Epos2(node)
+        function res = Epos4(node, usbId)
             % constructor
-            % use it as: Motor1 = Epos2(1);
+            % use it as: Motor1 = Epos4(1, 0);
             %
             % E. Yime, 2015
             %
             
             res.NodeID = node;
-            res.Handle = OpenCommunication;
+            res.Handle = OpenCommunication(usbId);
             res.OpMode = res.GetOperationMode;
             res.Enable = res.IsEnable;
             res.GetHommingMethod;
@@ -158,7 +158,7 @@ classdef Epos2 < handle
         end
         
         function res = IsInErrorState(obj)
-            % This function is for obtaining the error state in a Epos2
+            % This function is for obtaining the error state in a Epos4
             % node
             %
             % use it as: 
@@ -174,7 +174,7 @@ classdef Epos2 < handle
         end
         
         function res = ExplainErrors(obj)
-            % This function is for listing the actual errors in a Epos2
+            % This function is for listing the actual errors in a Epos4
             % node
             %
             % use it as: 
@@ -253,7 +253,7 @@ classdef Epos2 < handle
         
         function res = ShowOperationMode(obj)
             % This function is for detecting actual Operation Mode in
-            % Epos2 class
+            % Epos4 class
             %
             % use it as:
             % >> Motor1.ShowOperationMode
@@ -266,7 +266,7 @@ classdef Epos2 < handle
         
         function res = GetOperationMode(obj)
             % This function is for receiving actual Operation Mode in a
-            % physical Epos2 Motor controller
+            % physical Epos4 Motor controller
             %
             % use it as:
             % >> Motor1.GetOperationMode
@@ -294,7 +294,7 @@ classdef Epos2 < handle
         end
             
         function res = SetOperationMode(obj, mode, varargin)
-            % This function is for setting the actual Operation Mode in a Epos2 Motor controller
+            % This function is for setting the actual Operation Mode in a Epos4 Motor controller
             % you can use it in the following ways,
             %
             % >> Motor1.SetOperationMode( OperationModes.HommingMode )
@@ -346,11 +346,11 @@ classdef Epos2 < handle
         end
         
         function res = SetHommingMethod(obj, homming, varargin)
-            % This function if for performing a homming in a EPOS2 node
+            % This function if for performing a homming in a EPOS4 node
             % you can use it in the following ways,
             %
             % >> Motor1.SetHommingMethod( HommingMethods.ActualPosition )
-            % The EPOS2 will set the actual position as the default zero
+            % The EPOS4 will set the actual position as the default zero
             %
             % >> Motor1.SetHommingMethod( HommingMethods.HomeSwitchNegSpeed )
             % or
@@ -600,7 +600,7 @@ classdef Epos2 < handle
         end
         
         function res = GetHommingMethod(obj)
-            % This function is for getting the actual value of the homming method in a EPOS2
+            % This function is for getting the actual value of the homming method in a EPOS4
             % controller 
             %
             % use it as:
@@ -650,8 +650,8 @@ classdef Epos2 < handle
         end
         
         function res = DoHomming(obj)
-            % This function is for Homming a motor connected to a EPOS2
-            % controller when the EPOS2 is in Homming
+            % This function is for Homming a motor connected to a EPOS4
+            % controller when the EPOS4 is in Homming
             %
             % use it as:
             %
@@ -678,7 +678,7 @@ classdef Epos2 < handle
         end
              
         function res = IsEnable(obj)
-            % This function is for detecting if EPOS2 is enabled
+            % This function is for detecting if EPOS4 is enabled
             %
             % use it as:
             % >> Motor1.IsEnable
@@ -690,7 +690,7 @@ classdef Epos2 < handle
         end
         
         function res = EnableNode(obj)
-            % This function is for enabling a physical EPOS2 Motor Controller
+            % This function is for enabling a physical EPOS4 Motor Controller
             %
             % use it as:
             % >> Motor1.EnableNode
@@ -707,7 +707,7 @@ classdef Epos2 < handle
         end
         
         function res = DisableNode(obj)
-            % This function is for disabling a physical EPOS2 Motor Controller
+            % This function is for disabling a physical EPOS4 Motor Controller
             %
             % use it as:
             % >> Motor1.DisableNode
@@ -720,7 +720,7 @@ classdef Epos2 < handle
         end
         
         function res = GetStatusWord(obj)
-            % This function is for getting the actual status word in a EPOS2
+            % This function is for getting the actual status word in a EPOS4
             % object dictionary  
             %
             % use it as:
@@ -773,7 +773,7 @@ classdef Epos2 < handle
         end
         
         function res = ActualPosition(obj)
-            % This function is for obtaining the actual position of the EPOS2
+            % This function is for obtaining the actual position of the EPOS4
             % node
             %
             % use it as:
@@ -798,7 +798,7 @@ classdef Epos2 < handle
         end
         
         function res = MotionInPosition(obj, varargin)
-            % This function is for moving a motor connected to a EPOS2 controller
+            % This function is for moving a motor connected to a EPOS4 controller
             % when the motor is in Position or Profile Position Mode.
             %
             % use it as:
@@ -855,7 +855,7 @@ classdef Epos2 < handle
         end
         
         function res = ActualVelocity(obj)
-            % This function is for obtaining the actual velocity of the EPOS2
+            % This function is for obtaining the actual velocity of the EPOS4
             % node
             %
             % use it as:
@@ -868,7 +868,7 @@ classdef Epos2 < handle
         end
         
         function res = MotionInVelocity(obj, varargin)
-            % This function is for moving a motor connected to a EPOS2 controller
+            % This function is for moving a motor connected to a EPOS4 controller
             % when the motor is in Velocity or Profile Velocity Mode.
             %
             % use it as:
@@ -915,7 +915,7 @@ classdef Epos2 < handle
         end
         
         function res = ActualCurrent(obj)
-            % This function is for obtaining the actual current of the EPOS2
+            % This function is for obtaining the actual current of the EPOS4
             % node
             %
             % use it as:
@@ -928,7 +928,7 @@ classdef Epos2 < handle
         end
         
         function res = MotionWithCurrent(obj, current)
-            % This function is for moving a motor connected to a EPOS2 controller
+            % This function is for moving a motor connected to a EPOS4 controller
             % when the motor is in Current Mode
             %
             % use it as:
@@ -952,7 +952,7 @@ classdef Epos2 < handle
         end
         
         function res = Stop(obj)
-            % This function is for stopping a motor connected to a EPOS2 controller
+            % This function is for stopping a motor connected to a EPOS4 controller
             %
             % use it as:
             %

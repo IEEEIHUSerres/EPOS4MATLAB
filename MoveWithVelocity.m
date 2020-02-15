@@ -1,5 +1,5 @@
 function res = MoveWithVelocity(handle, nodeid, vel)
-% This function move the motor attached to a EPOS 2 which is in
+% This function move the motor attached to a EPOS 4 which is in
 % Profile Velocity Mode.
 %
 % Profile Velocity Mode is set with,
@@ -20,7 +20,7 @@ function res = MoveWithVelocity(handle, nodeid, vel)
 %
 % handle is the number returned by OpenCommunication
 %
-% nodeid is the ID for EPOS 2 controller
+% nodeid is the ID for EPOS 4 controller
 %
 % rpm is the desired velocity in revolutions per seconds
 %

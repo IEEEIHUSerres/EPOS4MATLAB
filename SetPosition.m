@@ -1,5 +1,5 @@
 function res = SetPosition(handle, nodeid, pulses)
-% This function set the desired position setpoint for a EPOS 2 node
+% This function set the desired position setpoint for a EPOS 4 node
 % It is only work in Position Mode, which can be set with,
 %
 %   >> SetOperationMode(handle, nodeid, 4);
@@ -14,7 +14,7 @@ function res = SetPosition(handle, nodeid, pulses)
 %
 % handle is the number returned by OpenCommunication
 %
-% nodeid is the ID for EPOS 2 controller
+% nodeid is the ID for EPOS 4 controller
 %
 % pulses is the desired motor position in quadrature encoder pulses
 %

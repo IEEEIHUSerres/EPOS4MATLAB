@@ -1,5 +1,5 @@
-function res = OpenCommunication
-% This function open the USB port for sending data to EPOS 2 nodes
+function res = OpenCommunication(usbId)
+% This function open the USB port for sending data to EPOS 4 nodes
 %
 % Call it as,
 %

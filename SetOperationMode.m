@@ -1,5 +1,5 @@
 function res = SetOperationMode(handle, nodeid, OpMode)
-% This function set the operation mode for EPOS 2 idetifyed with 'nodeid'
+% This function set the operation mode for EPOS 4 idetifyed with 'nodeid'
 % Call it as,
 %
 % res = SetOperationMode(handle, nodeid, OpMode)
@@ -10,7 +10,7 @@ function res = SetOperationMode(handle, nodeid, OpMode)
 %
 % handle is the handle returned by OpenCommunication
 %
-% nodeid is the id number for EPOS 2 controller
+% nodeid is the id number for EPOS 4 controller
 %
 % OpMOde is a number greater than 0 and lower than 7.
 %    1   set node to Homming Mode.

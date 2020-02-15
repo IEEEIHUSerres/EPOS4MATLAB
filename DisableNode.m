@@ -12,7 +12,7 @@ function res = DisableNode(handle, nodeid)
 %
 % handle is the handle returned by OpenCommunication
 %
-% nodeid is the EPOS 2 node ID
+% nodeid is the EPOS 4 node ID
 % 
 % Copyright E. Yime, 2015.
 % Colombia

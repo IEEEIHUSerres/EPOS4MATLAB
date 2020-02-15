@@ -1,6 +1,37 @@
 # EPOS 4 (for) MATLAB
 Commanding Maxon EPOS 4 Motor Controller(s) from MATLAB
 
+# Requirements
+* A computer with Windows OS (Tested on Windows 10 Pro 1909)
+* EPOS Studio (Tested with EPOS Studio 2.4)
+* EPOS 4 Motor Controller (Tested with integrated motor - Exoskeleton Joint Actuator)
+* MATLAB (Tested with R2019b)
+* C++ Compiler (Tested with Microsoft Visual C++ 2019 (C) - Visual Studio 2019)
+
+# How to use it
+* Clone the repository `git clone git@github.com:IordanisKostelidis/EPOS4MATLAB.git`
+* Download and install the EPOS Studio - [Download Now](https://www.maxongroup.com/medias/sys_master/root/8837358125086/EPOS-2-4-IDX-Setup.zip)
+* From `C:\Program Files (x86)\maxon motor ag\EPOS IDX\EPOS4`, find and copy the following files to `./EPOS4MATLAB/Epos4Windows`
+    * `Definitions.h`
+    * `EposCmd.dll`
+    * `EposCmd.lib`
+    * `EposCmd64.dll`
+    * `EposCmd64.lib`
+    * `vxlapi.dll`
+    * `vxlapi64.dll`
+* Start the MATLAB
+* Open the `./EPOS4MATLAB` using MATLAB command window
+* Run the following commands from MATLAB command window
+    ```
+    Clean
+    Make
+    ```
+* Connect your EPOS 4 Motor Controller with USB
+* Run the demo with the following command
+    ```
+    DemoEpos
+    ```
+
 # ACKNOWLEDGMENTS
 * This library is original written by Eugenio Yime Rodriguez <Universidad Tecnologica de Bolivar> for EPOS 2 Motor Controllers
 * This is a modified version by Iordanis Kostelidis <HERMES Team> for EPOS 4 Motor Controllers

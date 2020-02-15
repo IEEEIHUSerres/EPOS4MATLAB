@@ -1,7 +1,7 @@
-/* This a library for communication with Maxon Motors EPOS2 motor controllers
+/* This a library for communication with Maxon EPOS4 motor controllers
  * using MATLAB.
  *
- * Copyright, Eugenio Yime Rodr�guez, 2015
+ * Copyright, Eugenio Yime Rodriguez, 2015
  *  
  */
 
@@ -12,42 +12,40 @@
 #include "Win2Linux.h"
 #endif
 
-void
-mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[])
-{
-    DWORD  ErrCode  = 0;
-    BOOL   Fault = FALSE;
+void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
+    DWORD ErrCode = 0;
+    BOOL Fault = FALSE;
     HANDLE mHandle;
-    WORD   NodeID;
-    long   lHandle;
-    long   TargetPosition;
-    BOOL   Absolute;
-    char   ErrorInfo[255]; 
-    
+    WORD NodeID;
+    long lHandle;
+    long TargetPosition;
+    BOOL Absolute;
+    char ErrorInfo[255];
+
     /* Examine input (right-hand-side) arguments. */
     if (nrhs != 4) {
         mexPrintf("Error: this function should be use with four input arguments\n");
         return;
     }
     /* Check first input */
-    if (mxGetM(prhs[0]) != 1 || mxGetM(prhs[0]) != 1 ) {
-       mexPrintf("Error: this function requires four input scalar\n");
-       return;
+    if (mxGetM(prhs[0]) != 1 || mxGetM(prhs[0]) != 1) {
+        mexPrintf("Error: this function requires four input scalar\n");
+        return;
     }
     /* Check second input */
-    if (mxGetM(prhs[1]) != 1 || mxGetM(prhs[1]) != 1 ) {
-       mexPrintf("Error: this function requires four input scalar\n");
-       return;
+    if (mxGetM(prhs[1]) != 1 || mxGetM(prhs[1]) != 1) {
+        mexPrintf("Error: this function requires four input scalar\n");
+        return;
     }
     /* Check third input */
-    if (mxGetM(prhs[2]) != 1 || mxGetM(prhs[2]) != 1 ) {
-       mexPrintf("Error: this function requires four input scalar\n");
-       return;
+    if (mxGetM(prhs[2]) != 1 || mxGetM(prhs[2]) != 1) {
+        mexPrintf("Error: this function requires four input scalar\n");
+        return;
     }
     /* Check four input */
-    if (mxGetM(prhs[3]) != 1 || mxGetM(prhs[3]) != 1 ) {
-       mexPrintf("Error: this function requires four input scalar\n");
-       return;
+    if (mxGetM(prhs[3]) != 1 || mxGetM(prhs[3]) != 1) {
+        mexPrintf("Error: this function requires four input scalar\n");
+        return;
     }
 
     /* Examine output (left-hand-side) arguments. */
@@ -55,7 +53,7 @@ mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[])
         mexPrintf("Error: this function should be use with only one output argument\n");
         return;
     }
-    
+
     /* create output matrix */
     plhs[0] = mxCreateDoubleScalar(0.0);
 
@@ -63,7 +61,7 @@ mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[])
     lHandle = (long) *mxGetPr(prhs[0]);
     mHandle = LongToHandle(lHandle);
     /* second input */
-    NodeID = (WORD) *mxGetPr(prhs[1]);
+    NodeID = (WORD) * mxGetPr(prhs[1]);
     /* third input */
     TargetPosition = (long) mxGetScalar(prhs[2]);
     /* four input */
@@ -72,7 +70,7 @@ mexFunction(int nlhs,mxArray *plhs[],int nrhs,const mxArray *prhs[])
     } else {
         Absolute = 0;
     };
-    
+
     /* Perform Motion */
     if (!VCS_MoveToPosition(mHandle, NodeID, TargetPosition, Absolute, 1, &ErrCode)) {
         VCS_GetErrorInfo(ErrCode, ErrorInfo, 255);

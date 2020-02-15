@@ -1,5 +1,5 @@
 function res = FindHome(handle, nodeID, type)
-% This function perfom the homming procedure for a Epos2 Node
+% This function perfom the homming procedure for a Epos4 Node
 %
 % Call it as,
 %
@@ -11,7 +11,7 @@ function res = FindHome(handle, nodeID, type)
 %
 % handle is the number returned by OpenCommunication
 %
-% nodeid is the ID for EPOS 2 controller
+% nodeid is the ID for EPOS 4 controller
 %
 % type is the home method, it should has one of the following values
 %

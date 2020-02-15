@@ -12,7 +12,7 @@ function res = WaitForTargetReached(handle, nodeid, timeout)
 %
 % handle is the number returned by OpenCommunication
 %
-% nodeid is the ID for EPOS 2 controller
+% nodeid is the ID for EPOS 4 controller
 %
 % timeout is the maximun time for waiting a task to finish
 %

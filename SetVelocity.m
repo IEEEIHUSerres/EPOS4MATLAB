@@ -1,5 +1,5 @@
 function res = SetVelocity(handle, nodeid, velocity)
-% This function set the desired velocity setpoint for a EPOS 2 node
+% This function set the desired velocity setpoint for a EPOS 4 node
 % It is only work in Velocity Mode, which can be set with,
 %
 %   >> SetOperationMode(handle, nodeid, 3);
@@ -14,7 +14,7 @@ function res = SetVelocity(handle, nodeid, velocity)
 %
 % handle is the number returned by OpenCommunication
 %
-% nodeid is the ID for EPOS 2 controller
+% nodeid is the ID for EPOS 4 controller
 %
 % velocity is the desired motor velocity in rpm 
 %
